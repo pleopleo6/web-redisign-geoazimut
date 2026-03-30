@@ -1,7 +1,7 @@
 import './App.css'
 import 'leaflet/dist/leaflet.css'
 import { useMemo, useState } from 'react'
-import { Circle, CircleMarker, MapContainer, Popup, TileLayer } from 'react-leaflet'
+import { Circle, CircleMarker, MapContainer, Popup, TileLayer, Tooltip } from 'react-leaflet'
 
 const content = {
   fr: {
@@ -62,7 +62,11 @@ const content = {
     contactButton: 'info@geoazimut.com',
     mapEyebrow: 'Installations',
     mapHeading: 'Présence sur le terrain en Suisse',
-    mapText: 'Vue cartographique sombre avec indicateurs radar pour illustrer la surveillance des sites.',
+    mapText: 'Chaque site est représenté comme un nœud actif de détection radar sur une carte sombre.',
+    legendTitle: 'Lecture de la carte',
+    legendA: 'Nœud actif',
+    legendB: 'Zone de détection',
+    legendC: 'Signal radar / surveillance',
   },
   en: {
     langLabel: 'EN',
@@ -121,7 +125,11 @@ const content = {
     contactButton: 'info@geoazimut.com',
     mapEyebrow: 'Installations',
     mapHeading: 'Field presence across Switzerland',
-    mapText: 'Dark map view with radar-style indicators to evoke active site monitoring.',
+    mapText: 'Each site is represented as an active radar detection node on a dark technical map.',
+    legendTitle: 'Map legend',
+    legendA: 'Active node',
+    legendB: 'Detection zone',
+    legendC: 'Radar pulse / monitoring',
   },
   de: {
     langLabel: 'DE',
@@ -180,29 +188,51 @@ const content = {
     contactButton: 'info@geoazimut.com',
     mapEyebrow: 'Installationen',
     mapHeading: 'Präsenz im Feld in der ganzen Schweiz',
-    mapText: 'Dunkle Kartenansicht mit radarartigen Signalen zur Illustration aktiver Standortüberwachung.',
+    mapText: 'Jeder Standort wird als aktiver Radar-Erkennungsknoten auf einer dunklen technischen Karte dargestellt.',
+    legendTitle: 'Kartenlegende',
+    legendA: 'Aktiver Knoten',
+    legendB: 'Erfassungszone',
+    legendC: 'Radarimpuls / Überwachung',
   },
 }
 
 const languageOrder = ['fr', 'en', 'de']
 
 const installations = [
-  { name: 'Champéry', coords: [46.17543, 6.86903], danger: 180 },
-  { name: 'Echallens', coords: [46.633, 6.633], danger: 220 },
-  { name: 'La Fouly', coords: [46.071, 7.101], danger: 280 },
-  { name: 'St-Sulpice', coords: [46.511, 6.559], danger: 180 },
-  { name: 'Gottéron (Fribourg)', coords: [46.806, 7.162], danger: 220 },
-  { name: 'Vens', coords: [46.033, 7.14], danger: 320 },
-  { name: 'Torrent St-Barthélémy', coords: [46.09, 7.2], danger: 260 },
-  { name: 'Le Frachey', coords: [46.08, 7.16], danger: 220 },
-  { name: 'Le Pissot', coords: [46.06, 7.18], danger: 210 },
-  { name: 'Fregnoley', coords: [46.05, 7.15], danger: 230 },
-  { name: 'Comblonard', coords: [46.04, 7.17], danger: 240 },
-  { name: 'Blatten', coords: [46.422, 7.82], danger: 300 },
-  { name: 'Les Ars', coords: [46.06, 7.13], danger: 210 },
-  { name: "Torrent de l'Echerche", coords: [46.02, 7.12], danger: 280 },
-  { name: 'Sé de la Raide', coords: [46.05, 7.14], danger: 230 },
+  { name: 'Champéry', coords: [46.17543, 6.86903], danger: 180, level: 'medium' },
+  { name: 'Echallens', coords: [46.633, 6.633], danger: 220, level: 'low' },
+  { name: 'La Fouly', coords: [46.071, 7.101], danger: 280, level: 'high' },
+  { name: 'St-Sulpice', coords: [46.511, 6.559], danger: 180, level: 'low' },
+  { name: 'Gottéron (Fribourg)', coords: [46.806, 7.162], danger: 220, level: 'medium' },
+  { name: 'Vens', coords: [46.033, 7.14], danger: 320, level: 'high' },
+  { name: 'Torrent St-Barthélémy', coords: [46.09, 7.2], danger: 260, level: 'high' },
+  { name: 'Le Frachey', coords: [46.08, 7.16], danger: 220, level: 'medium' },
+  { name: 'Le Pissot', coords: [46.06, 7.18], danger: 210, level: 'medium' },
+  { name: 'Fregnoley', coords: [46.05, 7.15], danger: 230, level: 'medium' },
+  { name: 'Comblonard', coords: [46.04, 7.17], danger: 240, level: 'medium' },
+  { name: 'Blatten', coords: [46.422, 7.82], danger: 300, level: 'high' },
+  { name: 'Les Ars', coords: [46.06, 7.13], danger: 210, level: 'medium' },
+  { name: "Torrent de l'Echerche", coords: [46.02, 7.12], danger: 280, level: 'high' },
+  { name: 'Sé de la Raide', coords: [46.05, 7.14], danger: 230, level: 'medium' },
 ]
+
+const levelStyles = {
+  low: {
+    marker: '#8cf4ff',
+    pulse: '#52c7ff',
+    fill: '#52c7ff',
+  },
+  medium: {
+    marker: '#7af7ff',
+    pulse: '#34d3ff',
+    fill: '#34d3ff',
+  },
+  high: {
+    marker: '#b8fff3',
+    pulse: '#64f0c8',
+    fill: '#64f0c8',
+  },
+}
 
 function App() {
   const [language, setLanguage] = useState('fr')
@@ -343,57 +373,79 @@ function App() {
                   attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
                   url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
                 />
-                {installations.map((site, index) => (
-                  <>
-                    <Circle
-                      key={`${site.name}-pulse-1`}
-                      center={site.coords}
-                      radius={site.danger}
-                      pathOptions={{
-                        color: '#61dafb',
-                        weight: 1,
-                        fillColor: '#61dafb',
-                        fillOpacity: 0.08,
-                        className: `radar-ring radar-ring-${(index % 3) + 1}`,
-                      }}
-                    />
-                    <Circle
-                      key={`${site.name}-pulse-2`}
-                      center={site.coords}
-                      radius={site.danger * 1.65}
-                      pathOptions={{
-                        color: '#61dafb',
-                        weight: 1,
-                        fillColor: '#61dafb',
-                        fillOpacity: 0.04,
-                        className: `radar-ring radar-ring-${((index + 1) % 3) + 1}`,
-                      }}
-                    />
-                    <CircleMarker
-                      key={site.name}
-                      center={site.coords}
-                      radius={8}
-                      pathOptions={{
-                        color: '#d7f7ff',
-                        weight: 3,
-                        fillColor: '#5be7ff',
-                        fillOpacity: 1,
-                      }}
-                    >
-                      <Popup>{site.name}</Popup>
-                    </CircleMarker>
-                  </>
-                ))}
+                {installations.map((site, index) => {
+                  const style = levelStyles[site.level]
+                  return (
+                    <div key={site.name}>
+                      <Circle
+                        center={site.coords}
+                        radius={site.danger * 0.9}
+                        pathOptions={{
+                          color: style.pulse,
+                          weight: 1,
+                          fillColor: style.fill,
+                          fillOpacity: 0.08,
+                          className: `radar-ring radar-ring-${(index % 3) + 1}`,
+                        }}
+                      />
+                      <Circle
+                        center={site.coords}
+                        radius={site.danger * 1.45}
+                        pathOptions={{
+                          color: style.pulse,
+                          weight: 1,
+                          fillColor: style.fill,
+                          fillOpacity: 0.04,
+                          className: `radar-ring radar-ring-${((index + 1) % 3) + 1}`,
+                        }}
+                      />
+                      <CircleMarker
+                        center={site.coords}
+                        radius={10}
+                        pathOptions={{
+                          color: '#d9fbff',
+                          weight: 3,
+                          fillColor: style.marker,
+                          fillOpacity: 1,
+                          className: 'node-marker',
+                        }}
+                      >
+                        <Tooltip direction="top" offset={[0, -10]} opacity={1} className="map-tooltip" permanent={false}>
+                          {site.name}
+                        </Tooltip>
+                        <Popup>{site.name}</Popup>
+                      </CircleMarker>
+                    </div>
+                  )
+                })}
               </MapContainer>
             </div>
 
-            <div className="installations-list-card dark-list-card">
-              {installations.map((site) => (
-                <div className="installation-item" key={site.name}>
-                  <span className="installation-dot installation-dot-live" />
-                  <span>{site.name}</span>
+            <div className="installations-side-panel dark-list-card">
+              <div className="map-legend-card">
+                <strong>{t.legendTitle}</strong>
+                <div className="legend-item">
+                  <span className="legend-node" />
+                  <span>{t.legendA}</span>
                 </div>
-              ))}
+                <div className="legend-item">
+                  <span className="legend-zone" />
+                  <span>{t.legendB}</span>
+                </div>
+                <div className="legend-item">
+                  <span className="legend-pulse" />
+                  <span>{t.legendC}</span>
+                </div>
+              </div>
+
+              <div className="installations-list-card dark-list-card-inner">
+                {installations.map((site) => (
+                  <div className="installation-item" key={site.name}>
+                    <span className={`installation-dot installation-dot-live installation-dot-${site.level}`} />
+                    <span>{site.name}</span>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </section>

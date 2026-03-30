@@ -134,7 +134,7 @@ button {
 .feature-panel,
 .cta-section,
 .osm-map-card,
-.installations-list-card {
+.installations-side-panel {
   border: 1px solid rgba(255, 255, 255, 0.8);
   background: rgba(255, 255, 255, 0.78);
   backdrop-filter: blur(16px);
@@ -313,7 +313,9 @@ h1 {
 
 .strip span,
 .service-card,
-.feature-panel > div {
+.feature-panel > div,
+.map-legend-card,
+.installations-list-card {
   padding: 22px;
   border-radius: 22px;
   background: rgba(255, 255, 255, 0.72);
@@ -401,12 +403,12 @@ h3 {
 
 .map-layout {
   display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
+  grid-template-columns: 1.08fr 0.92fr;
   gap: 18px;
 }
 
 .osm-map-card,
-.installations-list-card {
+.installations-side-panel {
   border-radius: 36px;
 }
 
@@ -420,7 +422,7 @@ h3 {
 }
 
 .leaflet-map {
-  height: 520px;
+  height: 560px;
   width: 100%;
   border-radius: 26px;
   overflow: hidden;
@@ -428,6 +430,10 @@ h3 {
 
 .leaflet-container {
   background: #0b1220;
+}
+
+.node-marker {
+  filter: drop-shadow(0 0 10px rgba(91, 231, 255, 0.5));
 }
 
 .radar-ring {
@@ -440,11 +446,11 @@ h3 {
 }
 
 .radar-ring-2 {
-  animation-delay: 1.2s;
+  animation-delay: 1.15s;
 }
 
 .radar-ring-3 {
-  animation-delay: 2.4s;
+  animation-delay: 2.3s;
 }
 
 @keyframes radarPulse {
@@ -459,17 +465,88 @@ h3 {
   }
 }
 
-.installations-list-card {
-  padding: 24px;
+.map-tooltip {
+  background: rgba(9, 16, 27, 0.94);
+  border: 1px solid rgba(117, 206, 255, 0.2);
+  color: #e8f9ff;
+  border-radius: 10px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.28);
+}
+
+.map-tooltip::before {
+  border-top-color: rgba(9, 16, 27, 0.94);
+}
+
+.installations-side-panel {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px 18px;
-  align-content: start;
+  grid-template-rows: auto 1fr;
+  gap: 16px;
+  padding: 18px;
 }
 
 .dark-list-card {
   background: linear-gradient(180deg, rgba(13, 20, 33, 0.94), rgba(18, 28, 46, 0.94));
   border-color: rgba(93, 122, 166, 0.18);
+}
+
+.map-legend-card,
+.dark-list-card-inner {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(120, 154, 196, 0.16);
+  box-shadow: none;
+}
+
+.map-legend-card strong {
+  display: block;
+  margin-bottom: 16px;
+  color: #e7f5ff;
+  font-size: 1.05rem;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #d4e6ff;
+  margin-bottom: 12px;
+}
+
+.legend-node,
+.legend-zone,
+.legend-pulse {
+  display: inline-block;
+  flex: 0 0 auto;
+}
+
+.legend-node {
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  background: #7af7ff;
+  box-shadow: 0 0 12px rgba(122, 247, 255, 0.6);
+}
+
+.legend-zone {
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(82, 199, 255, 0.8);
+  background: rgba(82, 199, 255, 0.12);
+}
+
+.legend-pulse {
+  width: 20px;
+  height: 20px;
+  border-radius: 999px;
+  border: 1px solid rgba(100, 240, 200, 0.75);
+  box-shadow: 0 0 0 5px rgba(100, 240, 200, 0.08);
+}
+
+.installations-list-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px 18px;
+  align-content: start;
 }
 
 .installation-item {
@@ -485,12 +562,22 @@ h3 {
   height: 10px;
   flex: 0 0 10px;
   border-radius: 999px;
-  background: #1f4566;
 }
 
 .installation-dot-live {
-  background: #5be7ff;
-  box-shadow: 0 0 0 4px rgba(91, 231, 255, 0.18), 0 0 14px rgba(91, 231, 255, 0.7);
+  box-shadow: 0 0 0 4px rgba(91, 231, 255, 0.15), 0 0 14px rgba(91, 231, 255, 0.5);
+}
+
+.installation-dot-low {
+  background: #8cf4ff;
+}
+
+.installation-dot-medium {
+  background: #7af7ff;
+}
+
+.installation-dot-high {
+  background: #b8fff3;
 }
 
 .cta-section {
@@ -567,7 +654,7 @@ h3 {
   .feature-panel,
   .cta-section,
   .osm-map-card,
-  .installations-list-card {
+  .installations-side-panel {
     border-radius: 28px;
   }
 
