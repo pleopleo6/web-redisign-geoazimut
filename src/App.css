@@ -414,11 +414,49 @@ h3 {
   padding: 14px;
 }
 
+.dark-map-card {
+  background: linear-gradient(180deg, rgba(8, 13, 22, 0.94), rgba(13, 21, 35, 0.94));
+  border-color: rgba(93, 122, 166, 0.18);
+}
+
 .leaflet-map {
   height: 520px;
   width: 100%;
   border-radius: 26px;
   overflow: hidden;
+}
+
+.leaflet-container {
+  background: #0b1220;
+}
+
+.radar-ring {
+  transform-origin: center;
+  animation: radarPulse 3.6s ease-out infinite;
+}
+
+.radar-ring-1 {
+  animation-delay: 0s;
+}
+
+.radar-ring-2 {
+  animation-delay: 1.2s;
+}
+
+.radar-ring-3 {
+  animation-delay: 2.4s;
+}
+
+@keyframes radarPulse {
+  0% {
+    opacity: 0.9;
+  }
+  70% {
+    opacity: 0.22;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 .installations-list-card {
@@ -429,11 +467,16 @@ h3 {
   align-content: start;
 }
 
+.dark-list-card {
+  background: linear-gradient(180deg, rgba(13, 20, 33, 0.94), rgba(18, 28, 46, 0.94));
+  border-color: rgba(93, 122, 166, 0.18);
+}
+
 .installation-item {
   display: flex;
   align-items: center;
   gap: 10px;
-  color: #294662;
+  color: #d4e6ff;
   min-height: 28px;
 }
 
@@ -443,6 +486,11 @@ h3 {
   flex: 0 0 10px;
   border-radius: 999px;
   background: #1f4566;
+}
+
+.installation-dot-live {
+  background: #5be7ff;
+  box-shadow: 0 0 0 4px rgba(91, 231, 255, 0.18), 0 0 14px rgba(91, 231, 255, 0.7);
 }
 
 .cta-section {

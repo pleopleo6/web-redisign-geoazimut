@@ -1,7 +1,7 @@
 import './App.css'
 import 'leaflet/dist/leaflet.css'
 import { useMemo, useState } from 'react'
-import { CircleMarker, MapContainer, Popup, TileLayer } from 'react-leaflet'
+import { Circle, CircleMarker, MapContainer, Popup, TileLayer } from 'react-leaflet'
 
 const content = {
   fr: {
@@ -62,7 +62,7 @@ const content = {
     contactButton: 'info@geoazimut.com',
     mapEyebrow: 'Installations',
     mapHeading: 'Présence sur le terrain en Suisse',
-    mapText: 'Carte OpenStreetMap des sites d’installation et d’intervention fournis.',
+    mapText: 'Vue cartographique sombre avec indicateurs radar pour illustrer la surveillance des sites.',
   },
   en: {
     langLabel: 'EN',
@@ -121,7 +121,7 @@ const content = {
     contactButton: 'info@geoazimut.com',
     mapEyebrow: 'Installations',
     mapHeading: 'Field presence across Switzerland',
-    mapText: 'OpenStreetMap view of the provided installation and intervention sites.',
+    mapText: 'Dark map view with radar-style indicators to evoke active site monitoring.',
   },
   de: {
     langLabel: 'DE',
@@ -180,28 +180,28 @@ const content = {
     contactButton: 'info@geoazimut.com',
     mapEyebrow: 'Installationen',
     mapHeading: 'Präsenz im Feld in der ganzen Schweiz',
-    mapText: 'OpenStreetMap-Ansicht der bereitgestellten Installations- und Einsatzorte.',
+    mapText: 'Dunkle Kartenansicht mit radarartigen Signalen zur Illustration aktiver Standortüberwachung.',
   },
 }
 
 const languageOrder = ['fr', 'en', 'de']
 
 const installations = [
-  { name: 'Champéry', coords: [46.17543, 6.86903] },
-  { name: 'Echallens', coords: [46.633, 6.633] },
-  { name: 'La Fouly', coords: [46.071, 7.101] },
-  { name: 'St-Sulpice', coords: [46.511, 6.559] },
-  { name: 'Gottéron (Fribourg)', coords: [46.806, 7.162] },
-  { name: 'Vens', coords: [46.033, 7.14] },
-  { name: 'Torrent St-Barthélémy', coords: [46.09, 7.2] },
-  { name: 'Le Frachey', coords: [46.08, 7.16] },
-  { name: 'Le Pissot', coords: [46.06, 7.18] },
-  { name: 'Fregnoley', coords: [46.05, 7.15] },
-  { name: 'Comblonard', coords: [46.04, 7.17] },
-  { name: 'Blatten', coords: [46.422, 7.82] },
-  { name: 'Les Ars', coords: [46.06, 7.13] },
-  { name: "Torrent de l'Echerche", coords: [46.02, 7.12] },
-  { name: 'Sé de la Raide', coords: [46.05, 7.14] },
+  { name: 'Champéry', coords: [46.17543, 6.86903], danger: 180 },
+  { name: 'Echallens', coords: [46.633, 6.633], danger: 220 },
+  { name: 'La Fouly', coords: [46.071, 7.101], danger: 280 },
+  { name: 'St-Sulpice', coords: [46.511, 6.559], danger: 180 },
+  { name: 'Gottéron (Fribourg)', coords: [46.806, 7.162], danger: 220 },
+  { name: 'Vens', coords: [46.033, 7.14], danger: 320 },
+  { name: 'Torrent St-Barthélémy', coords: [46.09, 7.2], danger: 260 },
+  { name: 'Le Frachey', coords: [46.08, 7.16], danger: 220 },
+  { name: 'Le Pissot', coords: [46.06, 7.18], danger: 210 },
+  { name: 'Fregnoley', coords: [46.05, 7.15], danger: 230 },
+  { name: 'Comblonard', coords: [46.04, 7.17], danger: 240 },
+  { name: 'Blatten', coords: [46.422, 7.82], danger: 300 },
+  { name: 'Les Ars', coords: [46.06, 7.13], danger: 210 },
+  { name: "Torrent de l'Echerche", coords: [46.02, 7.12], danger: 280 },
+  { name: 'Sé de la Raide', coords: [46.05, 7.14], danger: 230 },
 ]
 
 function App() {
@@ -337,34 +337,60 @@ function App() {
           </div>
 
           <div className="map-layout">
-            <div className="osm-map-card">
+            <div className="osm-map-card dark-map-card">
               <MapContainer center={[46.35, 7.15]} zoom={8} scrollWheelZoom={false} className="leaflet-map">
                 <TileLayer
-                  attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                  attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+                  url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
                 />
-                {installations.map((site) => (
-                  <CircleMarker
-                    key={site.name}
-                    center={site.coords}
-                    radius={8}
-                    pathOptions={{
-                      color: '#ffffff',
-                      weight: 3,
-                      fillColor: '#1f4566',
-                      fillOpacity: 1,
-                    }}
-                  >
-                    <Popup>{site.name}</Popup>
-                  </CircleMarker>
+                {installations.map((site, index) => (
+                  <>
+                    <Circle
+                      key={`${site.name}-pulse-1`}
+                      center={site.coords}
+                      radius={site.danger}
+                      pathOptions={{
+                        color: '#61dafb',
+                        weight: 1,
+                        fillColor: '#61dafb',
+                        fillOpacity: 0.08,
+                        className: `radar-ring radar-ring-${(index % 3) + 1}`,
+                      }}
+                    />
+                    <Circle
+                      key={`${site.name}-pulse-2`}
+                      center={site.coords}
+                      radius={site.danger * 1.65}
+                      pathOptions={{
+                        color: '#61dafb',
+                        weight: 1,
+                        fillColor: '#61dafb',
+                        fillOpacity: 0.04,
+                        className: `radar-ring radar-ring-${((index + 1) % 3) + 1}`,
+                      }}
+                    />
+                    <CircleMarker
+                      key={site.name}
+                      center={site.coords}
+                      radius={8}
+                      pathOptions={{
+                        color: '#d7f7ff',
+                        weight: 3,
+                        fillColor: '#5be7ff',
+                        fillOpacity: 1,
+                      }}
+                    >
+                      <Popup>{site.name}</Popup>
+                    </CircleMarker>
+                  </>
                 ))}
               </MapContainer>
             </div>
 
-            <div className="installations-list-card">
+            <div className="installations-list-card dark-list-card">
               {installations.map((site) => (
                 <div className="installation-item" key={site.name}>
-                  <span className="installation-dot" />
+                  <span className="installation-dot installation-dot-live" />
                   <span>{site.name}</span>
                 </div>
               ))}
