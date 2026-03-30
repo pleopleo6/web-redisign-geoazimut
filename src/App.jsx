@@ -1,7 +1,7 @@
 import './App.css'
 import 'leaflet/dist/leaflet.css'
 import { useMemo, useState } from 'react'
-import { Circle, CircleMarker, MapContainer, Popup, TileLayer, Tooltip } from 'react-leaflet'
+import { Circle, CircleMarker, MapContainer, Popup, TileLayer, Tooltip, Polyline } from 'react-leaflet'
 
 const content = {
   fr: {
@@ -62,13 +62,18 @@ const content = {
     contactButton: 'info@geoazimut.com',
     mapEyebrow: 'Installations',
     mapHeading: 'Réseau d’installations en Suisse',
-    mapText: 'Une lecture plus éditoriale et plus nette du réseau de surveillance, avec nœuds actifs, zones de couverture et légende claire.',
+    mapText: 'Une lecture plus éditoriale et plus nette du réseau de surveillance, avec nœuds actifs, zones de couverture, catégories de risque et relief cartographique.',
     legendTitle: 'Lecture de la carte',
     legendA: 'Nœud actif',
     legendB: 'Zone de couverture',
     legendC: 'Signal de détection',
+    legendD: 'Liaison réseau',
+    riskTitle: 'Niveaux de vigilance',
+    riskLow: 'Vigilance standard',
+    riskMedium: 'Vigilance renforcée',
+    riskHigh: 'Zone sensible',
     mapCardTitle: 'Carte des installations',
-    mapCardText: 'Visualisation des points d’intervention et des zones de détection.',
+    mapCardText: 'Visualisation des points d’intervention, du relief et des zones de détection.',
   },
   en: {
     langLabel: 'EN',
@@ -127,13 +132,18 @@ const content = {
     contactButton: 'info@geoazimut.com',
     mapEyebrow: 'Installations',
     mapHeading: 'Installation network across Switzerland',
-    mapText: 'A cleaner editorial reading of the monitoring network, with active nodes, coverage zones and a clearer legend.',
+    mapText: 'A cleaner editorial reading of the monitoring network, with active nodes, coverage zones, risk categories and topographic relief.',
     legendTitle: 'Map legend',
     legendA: 'Active node',
     legendB: 'Coverage zone',
     legendC: 'Detection pulse',
+    legendD: 'Network link',
+    riskTitle: 'Risk categories',
+    riskLow: 'Standard watch',
+    riskMedium: 'Elevated watch',
+    riskHigh: 'Sensitive zone',
     mapCardTitle: 'Installation map',
-    mapCardText: 'Visualisation of intervention points and detection coverage areas.',
+    mapCardText: 'Visualisation of intervention points, terrain relief and detection coverage areas.',
   },
   de: {
     langLabel: 'DE',
@@ -192,13 +202,18 @@ const content = {
     contactButton: 'info@geoazimut.com',
     mapEyebrow: 'Installationen',
     mapHeading: 'Installationsnetz in der ganzen Schweiz',
-    mapText: 'Eine klarere und editoriale Darstellung des Überwachungsnetzes mit aktiven Knoten, Abdeckungszonen und verständlicher Legende.',
+    mapText: 'Eine klarere und editoriale Darstellung des Überwachungsnetzes mit aktiven Knoten, Abdeckungszonen, Risikokategorien und topografischem Relief.',
     legendTitle: 'Kartenlegende',
     legendA: 'Aktiver Knoten',
     legendB: 'Abdeckungszone',
     legendC: 'Erkennungssignal',
+    legendD: 'Netzverbindung',
+    riskTitle: 'Risikokategorien',
+    riskLow: 'Standardüberwachung',
+    riskMedium: 'Erhöhte Überwachung',
+    riskHigh: 'Sensibler Bereich',
     mapCardTitle: 'Installationskarte',
-    mapCardText: 'Visualisierung der Einsatzpunkte und Erfassungsbereiche.',
+    mapCardText: 'Visualisierung der Einsatzpunkte, des Reliefs und der Erfassungsbereiche.',
   },
 }
 
@@ -222,21 +237,33 @@ const installations = [
   { name: 'Sé de la Raide', coords: [46.05, 7.14], danger: 230, level: 'medium' },
 ]
 
+const networkLinks = [
+  ['Echallens', 'St-Sulpice'],
+  ['St-Sulpice', 'Champéry'],
+  ['Champéry', 'La Fouly'],
+  ['La Fouly', 'Vens'],
+  ['Vens', 'Torrent St-Barthélémy'],
+  ['Torrent St-Barthélémy', 'Blatten'],
+  ['Gottéron (Fribourg)', 'Echallens'],
+]
+
+const installationByName = Object.fromEntries(installations.map((site) => [site.name, site]))
+
 const levelStyles = {
   low: {
-    marker: '#7fb5e6',
-    pulse: '#8dbce9',
-    fill: '#d8ebfa',
+    marker: '#6ea6d8',
+    pulse: '#88b8e3',
+    fill: '#dbeaf7',
   },
   medium: {
-    marker: '#5e93c6',
+    marker: '#4f89bf',
     pulse: '#6ca6d8',
-    fill: '#cfe4f8',
+    fill: '#d0e4f7',
   },
   high: {
-    marker: '#2f6ca7',
-    pulse: '#4f89bf',
-    fill: '#c7dcf3',
+    marker: '#c76a4f',
+    pulse: '#d88b73',
+    fill: '#f5ddd5',
   },
 }
 
@@ -375,7 +402,7 @@ function App() {
           </div>
 
           <div className="map-layout">
-            <div className="osm-map-card white-map-card">
+            <div className="osm-map-card white-map-card topo-map-card">
               <div className="map-card-header">
                 <div>
                   <small>{t.mapEyebrow}</small>
@@ -386,9 +413,23 @@ function App() {
 
               <MapContainer center={[46.35, 7.15]} zoom={8} scrollWheelZoom={false} className="leaflet-map light-map">
                 <TileLayer
-                  attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
-                  url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
+                  attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://www.openstreetmap.org/#map=1/71.6/-96.5">OpenTopoMap</a>'
+                  url="https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png"
                 />
+
+                {networkLinks.map(([from, to]) => (
+                  <Polyline
+                    key={`${from}-${to}`}
+                    positions={[installationByName[from].coords, installationByName[to].coords]}
+                    pathOptions={{
+                      color: '#8aa9c9',
+                      weight: 2,
+                      opacity: 0.55,
+                      dashArray: '6 8',
+                    }}
+                  />
+                ))}
+
                 {installations.map((site, index) => {
                   const style = levelStyles[site.level]
                   return (
@@ -451,6 +492,26 @@ function App() {
                 <div className="legend-item legend-item-dark">
                   <span className="legend-pulse light-legend-pulse" />
                   <span>{t.legendC}</span>
+                </div>
+                <div className="legend-item legend-item-dark">
+                  <span className="legend-line" />
+                  <span>{t.legendD}</span>
+                </div>
+              </div>
+
+              <div className="map-legend-card white-legend-card risk-card">
+                <strong>{t.riskTitle}</strong>
+                <div className="legend-item legend-item-dark">
+                  <span className="risk-swatch risk-low" />
+                  <span>{t.riskLow}</span>
+                </div>
+                <div className="legend-item legend-item-dark">
+                  <span className="risk-swatch risk-medium" />
+                  <span>{t.riskMedium}</span>
+                </div>
+                <div className="legend-item legend-item-dark">
+                  <span className="risk-swatch risk-high" />
+                  <span>{t.riskHigh}</span>
                 </div>
               </div>
 

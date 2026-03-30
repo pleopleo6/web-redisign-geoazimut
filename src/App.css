@@ -428,6 +428,10 @@ h3 {
   border-color: rgba(223, 232, 242, 0.98);
 }
 
+.topo-map-card {
+  box-shadow: 0 20px 56px rgba(40, 70, 104, 0.1);
+}
+
 .map-card-header {
   display: flex;
   justify-content: space-between;
@@ -514,7 +518,7 @@ h3 {
 
 .installations-side-panel {
   display: grid;
-  grid-template-rows: auto 1fr;
+  grid-template-rows: auto auto 1fr;
   gap: 16px;
   padding: 18px;
 }
@@ -550,7 +554,9 @@ h3 {
 
 .legend-node,
 .legend-zone,
-.legend-pulse {
+.legend-pulse,
+.legend-line,
+.risk-swatch {
   display: inline-block;
   flex: 0 0 auto;
 }
@@ -559,7 +565,7 @@ h3 {
   width: 12px;
   height: 12px;
   border-radius: 999px;
-  background: #5e93c6;
+  background: #4f89bf;
   box-shadow: 0 0 12px rgba(94, 147, 198, 0.22);
 }
 
@@ -577,6 +583,30 @@ h3 {
   border-radius: 999px;
   border: 1px solid rgba(79, 137, 191, 0.72);
   box-shadow: 0 0 0 5px rgba(79, 137, 191, 0.08);
+}
+
+.legend-line {
+  width: 24px;
+  height: 0;
+  border-top: 2px dashed #8aa9c9;
+}
+
+.risk-swatch {
+  width: 14px;
+  height: 14px;
+  border-radius: 4px;
+}
+
+.risk-low {
+  background: #6ea6d8;
+}
+
+.risk-medium {
+  background: #4f89bf;
+}
+
+.risk-high {
+  background: #c76a4f;
 }
 
 .installations-list-card {
@@ -609,15 +639,15 @@ h3 {
 }
 
 .installation-dot-low {
-  background: #7fb5e6;
+  background: #6ea6d8;
 }
 
 .installation-dot-medium {
-  background: #5e93c6;
+  background: #4f89bf;
 }
 
 .installation-dot-high {
-  background: #2f6ca7;
+  background: #c76a4f;
 }
 
 .cta-section {
