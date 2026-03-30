@@ -56,10 +56,20 @@ const content = {
     focusValue: 'Des systèmes utiles dans des conditions réelles',
     outcome: 'Résultat',
     outcomeValue: 'Plus de visibilité, de meilleures décisions, moins de friction',
-    contactHeading: 'Besoin d’une solution simple et sérieuse ?',
+    contactHeading: 'Parlons de votre projet',
     contactText:
-      'Expliquez votre besoin de mesure, de surveillance ou d’analyse. Nous revenons avec une proposition claire.',
-    contactButton: 'info@geoazimut.com',
+      'Décrivez brièvement votre besoin. Cette demande peut servir de premier point de contact avant un échange plus technique.',
+    contactButton: 'Envoyer la demande',
+    contactMeta: 'Réponse typique sous 1 à 2 jours ouvrés',
+    formName: 'Nom',
+    formCompany: 'Société',
+    formEmail: 'Email',
+    formPhone: 'Téléphone',
+    formNeed: 'Type de besoin',
+    formNeedPlaceholder: 'Choisir',
+    formNeedOptions: ['Surveillance', 'Géothermie', 'Analyse de données', 'Autre'],
+    formMessage: 'Message',
+    formMessagePlaceholder: 'Contexte du site, objectif, urgence, localisation…',
     mapEyebrow: 'Installations',
     mapHeading: 'Réseau d’installations en Suisse',
     mapText: 'Une lecture plus éditoriale et plus nette du réseau de surveillance, avec nœuds actifs, zones de couverture, catégories de risque et relief cartographique.',
@@ -75,6 +85,10 @@ const content = {
     mapCardTitle: 'Carte des installations',
     mapCardText: 'Visualisation des points d’intervention, du relief et des zones de détection.',
     mapNote: 'Les nœuds valaisans concentrent les zones de détection les plus denses du réseau.',
+    widgetsTitle: 'Nœuds du réseau',
+    widgetLabel: 'Nœud actif',
+    coverageLabel: 'Portée',
+    vigilanceLabel: 'Niveau',
   },
   en: {
     langLabel: 'EN',
@@ -127,10 +141,20 @@ const content = {
     focusValue: 'Useful systems that perform in real conditions',
     outcome: 'Outcome',
     outcomeValue: 'Better visibility, stronger decisions, less friction',
-    contactHeading: 'Need a straightforward solution?',
+    contactHeading: 'Let’s discuss your project',
     contactText:
-      'Tell us what you need to measure, monitor or understand. We will come back with a clear proposal.',
-    contactButton: 'info@geoazimut.com',
+      'Share the essentials of your need. This form works as a clear first contact before a more technical exchange.',
+    contactButton: 'Send inquiry',
+    contactMeta: 'Typical reply within 1 to 2 business days',
+    formName: 'Name',
+    formCompany: 'Company',
+    formEmail: 'Email',
+    formPhone: 'Phone',
+    formNeed: 'Need type',
+    formNeedPlaceholder: 'Select',
+    formNeedOptions: ['Monitoring', 'Geothermal', 'Data analysis', 'Other'],
+    formMessage: 'Message',
+    formMessagePlaceholder: 'Site context, objective, urgency, location…',
     mapEyebrow: 'Installations',
     mapHeading: 'Installation network across Switzerland',
     mapText: 'A cleaner editorial reading of the monitoring network, with active nodes, coverage zones, risk categories and topographic relief.',
@@ -146,6 +170,10 @@ const content = {
     mapCardTitle: 'Installation map',
     mapCardText: 'Visualisation of intervention points, terrain relief and detection coverage areas.',
     mapNote: 'The Valais cluster concentrates the densest detection coverage in the network.',
+    widgetsTitle: 'Network nodes',
+    widgetLabel: 'Active node',
+    coverageLabel: 'Coverage',
+    vigilanceLabel: 'Level',
   },
   de: {
     langLabel: 'DE',
@@ -198,10 +226,20 @@ const content = {
     focusValue: 'Nützliche Systeme für reale Bedingungen',
     outcome: 'Ergebnis',
     outcomeValue: 'Mehr Übersicht, bessere Entscheidungen, weniger Reibung',
-    contactHeading: 'Brauchen Sie eine klare und solide Lösung?',
+    contactHeading: 'Sprechen wir über Ihr Projekt',
     contactText:
-      'Beschreiben Sie Ihren Bedarf für Messung, Überwachung oder Analyse. Wir melden uns mit einem klaren Vorschlag.',
-    contactButton: 'info@geoazimut.com',
+      'Beschreiben Sie kurz Ihren Bedarf. Dieses Formular dient als klarer erster Kontakt vor einer vertieften technischen Abstimmung.',
+    contactButton: 'Anfrage senden',
+    contactMeta: 'Typische Rückmeldung innerhalb von 1 bis 2 Werktagen',
+    formName: 'Name',
+    formCompany: 'Unternehmen',
+    formEmail: 'E-Mail',
+    formPhone: 'Telefon',
+    formNeed: 'Art des Bedarfs',
+    formNeedPlaceholder: 'Auswählen',
+    formNeedOptions: ['Monitoring', 'Geothermie', 'Datenanalyse', 'Andere'],
+    formMessage: 'Nachricht',
+    formMessagePlaceholder: 'Standortkontext, Ziel, Dringlichkeit, Ort…',
     mapEyebrow: 'Installationen',
     mapHeading: 'Installationsnetz in der ganzen Schweiz',
     mapText: 'Eine klarere und editoriale Darstellung des Überwachungsnetzes mit aktiven Knoten, Abdeckungszonen, Risikokategorien und topografischem Relief.',
@@ -217,6 +255,10 @@ const content = {
     mapCardTitle: 'Installationskarte',
     mapCardText: 'Visualisierung der Einsatzpunkte, des Reliefs und der Erfassungsbereiche.',
     mapNote: 'Die Walliser Standorte bilden den dichtesten Erfassungsbereich des Netzwerks.',
+    widgetsTitle: 'Netzknoten',
+    widgetLabel: 'Aktiver Knoten',
+    coverageLabel: 'Abdeckung',
+    vigilanceLabel: 'Stufe',
   },
 }
 
@@ -523,27 +565,82 @@ function App() {
                 </div>
               </div>
 
-              <div className="installations-list-card white-list-card-inner">
-                {installations.map((site) => (
-                  <div className="installation-item installation-item-dark" key={site.name}>
-                    <span className={`installation-dot installation-dot-live installation-dot-${site.level}`} />
-                    <span>{site.name}</span>
-                  </div>
-                ))}
+              <div className="widgets-panel white-list-card-inner">
+                <strong className="widgets-title">{t.widgetsTitle}</strong>
+                <div className="node-widget-grid">
+                  {installations.map((site) => (
+                    <div className="node-widget" key={site.name}>
+                      <div className="node-widget-top">
+                        <span className={`installation-dot installation-dot-live installation-dot-${site.level}`} />
+                        <span className="node-widget-badge">{t.widgetLabel}</span>
+                      </div>
+                      <strong>{site.name}</strong>
+                      <div className="node-widget-meta">
+                        <span>{t.coverageLabel}: {site.danger} m</span>
+                        <span>{t.vigilanceLabel}: {site.level}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
         </section>
 
-        <section className="section cta-section" id="contact">
-          <div>
+        <section className="section contact-section" id="contact">
+          <div className="contact-copy">
             <span className="eyebrow">{t.nav.contact}</span>
             <h2>{t.contactHeading}</h2>
             <p>{t.contactText}</p>
+            <small className="contact-meta">{t.contactMeta}</small>
           </div>
-          <a className="button button-primary" href="mailto:info@geoazimut.com">
-            {t.contactButton}
-          </a>
+
+          <form className="contact-form">
+            <div className="form-grid two-cols">
+              <label>
+                <span>{t.formName}</span>
+                <input type="text" name="name" />
+              </label>
+              <label>
+                <span>{t.formCompany}</span>
+                <input type="text" name="company" />
+              </label>
+            </div>
+
+            <div className="form-grid two-cols">
+              <label>
+                <span>{t.formEmail}</span>
+                <input type="email" name="email" />
+              </label>
+              <label>
+                <span>{t.formPhone}</span>
+                <input type="tel" name="phone" />
+              </label>
+            </div>
+
+            <label>
+              <span>{t.formNeed}</span>
+              <select name="need" defaultValue="">
+                <option value="" disabled>
+                  {t.formNeedPlaceholder}
+                </option>
+                {t.formNeedOptions.map((option) => (
+                  <option key={option} value={option}>
+                    {option}
+                  </option>
+                ))}
+              </select>
+            </label>
+
+            <label>
+              <span>{t.formMessage}</span>
+              <textarea name="message" rows="6" placeholder={t.formMessagePlaceholder} />
+            </label>
+
+            <button type="submit" className="button button-primary form-submit">
+              {t.contactButton}
+            </button>
+          </form>
         </section>
       </main>
     </div>

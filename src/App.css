@@ -36,7 +36,10 @@ a {
   text-decoration: none;
 }
 
-button {
+button,
+input,
+select,
+textarea {
   font: inherit;
 }
 
@@ -132,9 +135,10 @@ button {
 .hero-summary-panel,
 .service-card,
 .feature-panel,
-.cta-section,
 .osm-map-card,
-.installations-side-panel {
+.installations-side-panel,
+.contact-form,
+.contact-copy {
   border: 1px solid rgba(255, 255, 255, 0.8);
   background: rgba(255, 255, 255, 0.78);
   backdrop-filter: blur(16px);
@@ -218,6 +222,7 @@ h1 {
   padding: 0 22px;
   border-radius: 999px;
   font-weight: 600;
+  border: 0;
   transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
 }
 
@@ -283,7 +288,8 @@ h1 {
 
 .hero-summary-panel small,
 .feature-panel small,
-.map-card-header small {
+.map-card-header small,
+.contact-meta {
   display: block;
   margin-bottom: 10px;
   font-size: 0.8rem;
@@ -294,7 +300,8 @@ h1 {
 
 .hero-summary-panel strong,
 .feature-panel strong,
-.map-card-header strong {
+.map-card-header strong,
+.widgets-title {
   display: block;
   font-size: 1.28rem;
   line-height: 1.26;
@@ -318,7 +325,8 @@ h1 {
 .service-card,
 .feature-panel > div,
 .map-legend-card,
-.installations-list-card {
+.installations-list-card,
+.node-widget {
   padding: 22px;
   border-radius: 22px;
   background: rgba(255, 255, 255, 0.72);
@@ -354,13 +362,13 @@ h2 {
 
 .section-heading h2,
 .feature-copy h2,
-.cta-section h2 {
+.contact-copy h2 {
   max-width: 12ch;
 }
 
 .section p,
 .feature-copy p,
-.cta-section p {
+.contact-copy p {
   color: #516983;
   font-size: 1.03rem;
   line-height: 1.82;
@@ -390,7 +398,8 @@ h3 {
   letter-spacing: -0.03em;
 }
 
-.feature-section {
+.feature-section,
+.contact-section {
   display: grid;
   grid-template-columns: 0.9fr 1.1fr;
   gap: 20px;
@@ -415,15 +424,21 @@ h3 {
 }
 
 .osm-map-card,
-.installations-side-panel {
+.installations-side-panel,
+.contact-copy,
+.contact-form {
   border-radius: 40px;
 }
 
-.osm-map-card {
+.osm-map-card,
+.contact-form,
+.contact-copy {
   padding: 20px;
 }
 
-.white-map-card {
+.white-map-card,
+.contact-copy,
+.contact-form {
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(248, 251, 255, 0.98));
   border-color: rgba(223, 232, 242, 0.98);
 }
@@ -539,23 +554,22 @@ h3 {
 
 .installations-side-panel {
   display: grid;
-  grid-template-rows: auto auto 1fr;
+  grid-template-rows: auto auto auto;
   gap: 16px;
   padding: 20px;
-}
-
-.white-side-panel {
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(248, 251, 255, 0.98));
   border-color: rgba(223, 232, 242, 0.98);
 }
 
 .white-legend-card,
-.white-list-card-inner {
+.white-list-card-inner,
+.node-widget {
   background: rgba(252, 254, 255, 0.98);
   border-color: rgba(227, 236, 244, 0.98);
 }
 
-.map-legend-card strong {
+.map-legend-card strong,
+.widgets-title {
   display: block;
   margin-bottom: 16px;
   color: #17324e;
@@ -630,11 +644,40 @@ h3 {
   background: #c76a4f;
 }
 
-.installations-list-card {
+.widgets-panel {
+  border-radius: 28px;
+}
+
+.node-widget-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 14px 18px;
-  align-content: start;
+  gap: 12px;
+}
+
+.node-widget {
+  padding: 16px;
+}
+
+.node-widget-top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.node-widget-badge {
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #6a86a4;
+}
+
+.node-widget-meta {
+  display: grid;
+  gap: 6px;
+  margin-top: 10px;
+  color: #5a7591;
+  font-size: 0.9rem;
 }
 
 .installation-item {
@@ -671,20 +714,69 @@ h3 {
   background: #c76a4f;
 }
 
-.cta-section {
+.contact-copy {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: space-between;
-  gap: 24px;
-  margin-top: 96px;
-  padding: 40px;
-  border-radius: 40px;
+}
+
+.contact-meta {
+  margin-top: 18px;
+}
+
+.contact-form {
+  display: grid;
+  gap: 18px;
+}
+
+.form-grid {
+  display: grid;
+  gap: 16px;
+}
+
+.two-cols {
+  grid-template-columns: 1fr 1fr;
+}
+
+.contact-form label {
+  display: grid;
+  gap: 8px;
+  color: #2f4a68;
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 16px;
+  border: 1px solid rgba(216, 227, 238, 0.98);
+  background: rgba(255, 255, 255, 0.96);
+  color: #16314d;
+  outline: none;
+}
+
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus {
+  border-color: rgba(107, 155, 207, 0.9);
+  box-shadow: 0 0 0 4px rgba(107, 155, 207, 0.12);
+}
+
+.contact-form textarea {
+  resize: vertical;
+  min-height: 150px;
+}
+
+.form-submit {
+  justify-self: start;
 }
 
 @media (max-width: 1100px) {
   .hero,
   .feature-section,
-  .map-layout {
+  .map-layout,
+  .contact-section {
     grid-template-columns: 1fr;
   }
 
@@ -695,8 +787,7 @@ h3 {
 
 @media (max-width: 980px) {
   .topbar,
-  .feature-section,
-  .cta-section {
+  .feature-section {
     flex-direction: column;
     align-items: flex-start;
   }
@@ -715,7 +806,8 @@ h3 {
   .services-grid,
   .stats-row,
   .hero-summary-panel,
-  .installations-list-card {
+  .node-widget-grid,
+  .two-cols {
     grid-template-columns: 1fr 1fr;
   }
 
@@ -747,9 +839,10 @@ h3 {
   .hero-card,
   .hero-summary-panel,
   .feature-panel,
-  .cta-section,
   .osm-map-card,
-  .installations-side-panel {
+  .installations-side-panel,
+  .contact-copy,
+  .contact-form {
     border-radius: 28px;
   }
 
@@ -757,7 +850,8 @@ h3 {
   .services-grid,
   .stats-row,
   .hero-summary-panel,
-  .installations-list-card {
+  .node-widget-grid,
+  .two-cols {
     grid-template-columns: 1fr;
   }
 
@@ -771,10 +865,6 @@ h3 {
 
   .leaflet-map {
     height: 420px;
-  }
-
-  .cta-section {
-    padding: 28px;
   }
 
   .language-switcher {
