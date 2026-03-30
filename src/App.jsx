@@ -74,6 +74,7 @@ const content = {
     riskHigh: 'Zone sensible',
     mapCardTitle: 'Carte des installations',
     mapCardText: 'Visualisation des points d’intervention, du relief et des zones de détection.',
+    mapNote: 'Les nœuds valaisans concentrent les zones de détection les plus denses du réseau.',
   },
   en: {
     langLabel: 'EN',
@@ -144,6 +145,7 @@ const content = {
     riskHigh: 'Sensitive zone',
     mapCardTitle: 'Installation map',
     mapCardText: 'Visualisation of intervention points, terrain relief and detection coverage areas.',
+    mapNote: 'The Valais cluster concentrates the densest detection coverage in the network.',
   },
   de: {
     langLabel: 'DE',
@@ -214,6 +216,7 @@ const content = {
     riskHigh: 'Sensibler Bereich',
     mapCardTitle: 'Installationskarte',
     mapCardText: 'Visualisierung der Einsatzpunkte, des Reliefs und der Erfassungsbereiche.',
+    mapNote: 'Die Walliser Standorte bilden den dichtesten Erfassungsbereich des Netzwerks.',
   },
 }
 
@@ -409,6 +412,11 @@ function App() {
                   <strong>{t.mapCardTitle}</strong>
                 </div>
                 <p>{t.mapCardText}</p>
+              </div>
+
+              <div className="map-callout">
+                <span className="map-callout-dot" />
+                <span>{t.mapNote}</span>
               </div>
 
               <MapContainer center={[46.35, 7.15]} zoom={8} scrollWheelZoom={false} className="leaflet-map light-map">
