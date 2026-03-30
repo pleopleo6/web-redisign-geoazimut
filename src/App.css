@@ -282,7 +282,8 @@ h1 {
 }
 
 .hero-summary-panel small,
-.feature-panel small {
+.feature-panel small,
+.map-card-header small {
   display: block;
   margin-bottom: 10px;
   font-size: 0.8rem;
@@ -292,13 +293,15 @@ h1 {
 }
 
 .hero-summary-panel strong,
-.feature-panel strong {
+.feature-panel strong,
+.map-card-header strong {
   display: block;
   font-size: 1.28rem;
   line-height: 1.26;
 }
 
-.hero-summary-panel p {
+.hero-summary-panel p,
+.map-card-header p {
   margin: 12px 0 0;
   color: #54708d;
   line-height: 1.7;
@@ -336,6 +339,10 @@ h1 {
 .section-heading {
   max-width: 760px;
   margin-bottom: 28px;
+}
+
+.map-heading-row {
+  max-width: 100%;
 }
 
 h2 {
@@ -413,12 +420,29 @@ h3 {
 }
 
 .osm-map-card {
-  padding: 14px;
+  padding: 18px;
 }
 
-.dark-map-card {
-  background: linear-gradient(180deg, rgba(8, 13, 22, 0.94), rgba(13, 21, 35, 0.94));
-  border-color: rgba(93, 122, 166, 0.18);
+.white-map-card {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(248, 251, 255, 0.98));
+  border-color: rgba(223, 232, 242, 0.98);
+}
+
+.map-card-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.map-card-header > div {
+  max-width: 300px;
+}
+
+.map-card-header p {
+  max-width: 300px;
+  margin-top: 0;
 }
 
 .leaflet-map {
@@ -428,17 +452,25 @@ h3 {
   overflow: hidden;
 }
 
+.light-map {
+  border: 1px solid rgba(221, 232, 243, 0.95);
+}
+
 .leaflet-container {
-  background: #0b1220;
+  background: #eef4fa;
 }
 
 .node-marker {
-  filter: drop-shadow(0 0 10px rgba(91, 231, 255, 0.5));
+  filter: drop-shadow(0 0 10px rgba(66, 123, 180, 0.2));
+}
+
+.light-node-marker {
+  filter: drop-shadow(0 0 12px rgba(83, 139, 196, 0.24));
 }
 
 .radar-ring {
   transform-origin: center;
-  animation: radarPulse 3.6s ease-out infinite;
+  animation: radarPulse 3.8s ease-out infinite;
 }
 
 .radar-ring-1 {
@@ -446,16 +478,16 @@ h3 {
 }
 
 .radar-ring-2 {
-  animation-delay: 1.15s;
+  animation-delay: 1.25s;
 }
 
 .radar-ring-3 {
-  animation-delay: 2.3s;
+  animation-delay: 2.5s;
 }
 
 @keyframes radarPulse {
   0% {
-    opacity: 0.9;
+    opacity: 0.85;
   }
   70% {
     opacity: 0.22;
@@ -466,15 +498,18 @@ h3 {
 }
 
 .map-tooltip {
-  background: rgba(9, 16, 27, 0.94);
-  border: 1px solid rgba(117, 206, 255, 0.2);
-  color: #e8f9ff;
   border-radius: 10px;
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.28);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
 }
 
-.map-tooltip::before {
-  border-top-color: rgba(9, 16, 27, 0.94);
+.light-tooltip {
+  background: rgba(255, 255, 255, 0.97);
+  border: 1px solid rgba(198, 217, 236, 0.95);
+  color: #17324e;
+}
+
+.light-tooltip::before {
+  border-top-color: rgba(255, 255, 255, 0.97);
 }
 
 .installations-side-panel {
@@ -484,22 +519,21 @@ h3 {
   padding: 18px;
 }
 
-.dark-list-card {
-  background: linear-gradient(180deg, rgba(13, 20, 33, 0.94), rgba(18, 28, 46, 0.94));
-  border-color: rgba(93, 122, 166, 0.18);
+.white-side-panel {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(248, 251, 255, 0.98));
+  border-color: rgba(223, 232, 242, 0.98);
 }
 
-.map-legend-card,
-.dark-list-card-inner {
-  background: rgba(255, 255, 255, 0.04);
-  border-color: rgba(120, 154, 196, 0.16);
-  box-shadow: none;
+.white-legend-card,
+.white-list-card-inner {
+  background: rgba(252, 254, 255, 0.98);
+  border-color: rgba(227, 236, 244, 0.98);
 }
 
 .map-legend-card strong {
   display: block;
   margin-bottom: 16px;
-  color: #e7f5ff;
+  color: #17324e;
   font-size: 1.05rem;
 }
 
@@ -507,8 +541,11 @@ h3 {
   display: flex;
   align-items: center;
   gap: 12px;
-  color: #d4e6ff;
   margin-bottom: 12px;
+}
+
+.legend-item-dark {
+  color: #37516e;
 }
 
 .legend-node,
@@ -518,28 +555,28 @@ h3 {
   flex: 0 0 auto;
 }
 
-.legend-node {
+.light-legend-node {
   width: 12px;
   height: 12px;
   border-radius: 999px;
-  background: #7af7ff;
-  box-shadow: 0 0 12px rgba(122, 247, 255, 0.6);
+  background: #5e93c6;
+  box-shadow: 0 0 12px rgba(94, 147, 198, 0.22);
 }
 
-.legend-zone {
+.light-legend-zone {
   width: 18px;
   height: 18px;
   border-radius: 999px;
-  border: 1px solid rgba(82, 199, 255, 0.8);
-  background: rgba(82, 199, 255, 0.12);
+  border: 1px solid rgba(108, 166, 216, 0.8);
+  background: rgba(108, 166, 216, 0.18);
 }
 
-.legend-pulse {
+.light-legend-pulse {
   width: 20px;
   height: 20px;
   border-radius: 999px;
-  border: 1px solid rgba(100, 240, 200, 0.75);
-  box-shadow: 0 0 0 5px rgba(100, 240, 200, 0.08);
+  border: 1px solid rgba(79, 137, 191, 0.72);
+  box-shadow: 0 0 0 5px rgba(79, 137, 191, 0.08);
 }
 
 .installations-list-card {
@@ -553,8 +590,11 @@ h3 {
   display: flex;
   align-items: center;
   gap: 10px;
-  color: #d4e6ff;
   min-height: 28px;
+}
+
+.installation-item-dark {
+  color: #2f4a68;
 }
 
 .installation-dot {
@@ -565,19 +605,19 @@ h3 {
 }
 
 .installation-dot-live {
-  box-shadow: 0 0 0 4px rgba(91, 231, 255, 0.15), 0 0 14px rgba(91, 231, 255, 0.5);
+  box-shadow: 0 0 0 4px rgba(94, 147, 198, 0.12), 0 0 12px rgba(94, 147, 198, 0.18);
 }
 
 .installation-dot-low {
-  background: #8cf4ff;
+  background: #7fb5e6;
 }
 
 .installation-dot-medium {
-  background: #7af7ff;
+  background: #5e93c6;
 }
 
 .installation-dot-high {
-  background: #b8fff3;
+  background: #2f6ca7;
 }
 
 .cta-section {
@@ -595,6 +635,10 @@ h3 {
   .feature-section,
   .map-layout {
     grid-template-columns: 1fr;
+  }
+
+  .map-card-header {
+    flex-direction: column;
   }
 }
 

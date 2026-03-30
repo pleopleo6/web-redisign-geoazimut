@@ -61,12 +61,14 @@ const content = {
       'Expliquez votre besoin de mesure, de surveillance ou d’analyse. Nous revenons avec une proposition claire.',
     contactButton: 'info@geoazimut.com',
     mapEyebrow: 'Installations',
-    mapHeading: 'Présence sur le terrain en Suisse',
-    mapText: 'Chaque site est représenté comme un nœud actif de détection radar sur une carte sombre.',
+    mapHeading: 'Réseau d’installations en Suisse',
+    mapText: 'Une lecture plus éditoriale et plus nette du réseau de surveillance, avec nœuds actifs, zones de couverture et légende claire.',
     legendTitle: 'Lecture de la carte',
     legendA: 'Nœud actif',
-    legendB: 'Zone de détection',
-    legendC: 'Signal radar / surveillance',
+    legendB: 'Zone de couverture',
+    legendC: 'Signal de détection',
+    mapCardTitle: 'Carte des installations',
+    mapCardText: 'Visualisation des points d’intervention et des zones de détection.',
   },
   en: {
     langLabel: 'EN',
@@ -124,12 +126,14 @@ const content = {
       'Tell us what you need to measure, monitor or understand. We will come back with a clear proposal.',
     contactButton: 'info@geoazimut.com',
     mapEyebrow: 'Installations',
-    mapHeading: 'Field presence across Switzerland',
-    mapText: 'Each site is represented as an active radar detection node on a dark technical map.',
+    mapHeading: 'Installation network across Switzerland',
+    mapText: 'A cleaner editorial reading of the monitoring network, with active nodes, coverage zones and a clearer legend.',
     legendTitle: 'Map legend',
     legendA: 'Active node',
-    legendB: 'Detection zone',
-    legendC: 'Radar pulse / monitoring',
+    legendB: 'Coverage zone',
+    legendC: 'Detection pulse',
+    mapCardTitle: 'Installation map',
+    mapCardText: 'Visualisation of intervention points and detection coverage areas.',
   },
   de: {
     langLabel: 'DE',
@@ -187,12 +191,14 @@ const content = {
       'Beschreiben Sie Ihren Bedarf für Messung, Überwachung oder Analyse. Wir melden uns mit einem klaren Vorschlag.',
     contactButton: 'info@geoazimut.com',
     mapEyebrow: 'Installationen',
-    mapHeading: 'Präsenz im Feld in der ganzen Schweiz',
-    mapText: 'Jeder Standort wird als aktiver Radar-Erkennungsknoten auf einer dunklen technischen Karte dargestellt.',
+    mapHeading: 'Installationsnetz in der ganzen Schweiz',
+    mapText: 'Eine klarere und editoriale Darstellung des Überwachungsnetzes mit aktiven Knoten, Abdeckungszonen und verständlicher Legende.',
     legendTitle: 'Kartenlegende',
     legendA: 'Aktiver Knoten',
-    legendB: 'Erfassungszone',
-    legendC: 'Radarimpuls / Überwachung',
+    legendB: 'Abdeckungszone',
+    legendC: 'Erkennungssignal',
+    mapCardTitle: 'Installationskarte',
+    mapCardText: 'Visualisierung der Einsatzpunkte und Erfassungsbereiche.',
   },
 }
 
@@ -218,19 +224,19 @@ const installations = [
 
 const levelStyles = {
   low: {
-    marker: '#8cf4ff',
-    pulse: '#52c7ff',
-    fill: '#52c7ff',
+    marker: '#7fb5e6',
+    pulse: '#8dbce9',
+    fill: '#d8ebfa',
   },
   medium: {
-    marker: '#7af7ff',
-    pulse: '#34d3ff',
-    fill: '#34d3ff',
+    marker: '#5e93c6',
+    pulse: '#6ca6d8',
+    fill: '#cfe4f8',
   },
   high: {
-    marker: '#b8fff3',
-    pulse: '#64f0c8',
-    fill: '#64f0c8',
+    marker: '#2f6ca7',
+    pulse: '#4f89bf',
+    fill: '#c7dcf3',
   },
 }
 
@@ -360,18 +366,28 @@ function App() {
         </section>
 
         <section className="section map-section" id="installations">
-          <div className="section-heading">
-            <span className="eyebrow">{t.mapEyebrow}</span>
-            <h2>{t.mapHeading}</h2>
-            <p>{t.mapText}</p>
+          <div className="section-heading map-heading-row">
+            <div>
+              <span className="eyebrow">{t.mapEyebrow}</span>
+              <h2>{t.mapHeading}</h2>
+              <p>{t.mapText}</p>
+            </div>
           </div>
 
           <div className="map-layout">
-            <div className="osm-map-card dark-map-card">
-              <MapContainer center={[46.35, 7.15]} zoom={8} scrollWheelZoom={false} className="leaflet-map">
+            <div className="osm-map-card white-map-card">
+              <div className="map-card-header">
+                <div>
+                  <small>{t.mapEyebrow}</small>
+                  <strong>{t.mapCardTitle}</strong>
+                </div>
+                <p>{t.mapCardText}</p>
+              </div>
+
+              <MapContainer center={[46.35, 7.15]} zoom={8} scrollWheelZoom={false} className="leaflet-map light-map">
                 <TileLayer
                   attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
-                  url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+                  url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
                 />
                 {installations.map((site, index) => {
                   const style = levelStyles[site.level]
@@ -384,7 +400,7 @@ function App() {
                           color: style.pulse,
                           weight: 1,
                           fillColor: style.fill,
-                          fillOpacity: 0.08,
+                          fillOpacity: 0.16,
                           className: `radar-ring radar-ring-${(index % 3) + 1}`,
                         }}
                       />
@@ -395,22 +411,22 @@ function App() {
                           color: style.pulse,
                           weight: 1,
                           fillColor: style.fill,
-                          fillOpacity: 0.04,
+                          fillOpacity: 0.08,
                           className: `radar-ring radar-ring-${((index + 1) % 3) + 1}`,
                         }}
                       />
                       <CircleMarker
                         center={site.coords}
-                        radius={10}
+                        radius={9}
                         pathOptions={{
-                          color: '#d9fbff',
+                          color: '#ffffff',
                           weight: 3,
                           fillColor: style.marker,
                           fillOpacity: 1,
-                          className: 'node-marker',
+                          className: 'node-marker light-node-marker',
                         }}
                       >
-                        <Tooltip direction="top" offset={[0, -10]} opacity={1} className="map-tooltip" permanent={false}>
+                        <Tooltip direction="top" offset={[0, -10]} opacity={1} className="map-tooltip light-tooltip" permanent={false}>
                           {site.name}
                         </Tooltip>
                         <Popup>{site.name}</Popup>
@@ -421,26 +437,26 @@ function App() {
               </MapContainer>
             </div>
 
-            <div className="installations-side-panel dark-list-card">
-              <div className="map-legend-card">
+            <div className="installations-side-panel white-side-panel">
+              <div className="map-legend-card white-legend-card">
                 <strong>{t.legendTitle}</strong>
-                <div className="legend-item">
-                  <span className="legend-node" />
+                <div className="legend-item legend-item-dark">
+                  <span className="legend-node light-legend-node" />
                   <span>{t.legendA}</span>
                 </div>
-                <div className="legend-item">
-                  <span className="legend-zone" />
+                <div className="legend-item legend-item-dark">
+                  <span className="legend-zone light-legend-zone" />
                   <span>{t.legendB}</span>
                 </div>
-                <div className="legend-item">
-                  <span className="legend-pulse" />
+                <div className="legend-item legend-item-dark">
+                  <span className="legend-pulse light-legend-pulse" />
                   <span>{t.legendC}</span>
                 </div>
               </div>
 
-              <div className="installations-list-card dark-list-card-inner">
+              <div className="installations-list-card white-list-card-inner">
                 {installations.map((site) => (
-                  <div className="installation-item" key={site.name}>
+                  <div className="installation-item installation-item-dark" key={site.name}>
                     <span className={`installation-dot installation-dot-live installation-dot-${site.level}`} />
                     <span>{site.name}</span>
                   </div>
