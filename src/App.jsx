@@ -8,85 +8,85 @@ const content = {
     langLabel: 'FR',
     nav: { services: 'Services', about: 'À propos', contact: 'Contact' },
     eyebrow: 'Systèmes environnementaux · Géosciences · Géothermie',
-    title: 'Des solutions de terrain claires, fiables et précises.',
+    title: 'Surveillance, expertise et données pour des décisions de terrain plus sûres.',
     intro:
-      'GeoAzimut accompagne les entreprises et les collectivités avec des systèmes de mesure, des analyses et un support technique pensés pour des décisions concrètes.',
-    primaryCta: 'Nous contacter',
-    secondaryCta: 'Découvrir les services',
+      'GeoAzimut conçoit et déploie des systèmes de mesure et d’analyse pour les environnements exigeants, avec une approche claire, structurée et professionnelle.',
+    primaryCta: 'Prendre contact',
+    secondaryCta: 'Voir les services',
     stats: [
       { value: '2011', label: 'Fondée à Fribourg' },
-      { value: 'Suisse', label: 'Expertise de terrain' },
-      { value: 'De bout en bout', label: 'Étude à déploiement' },
+      { value: 'Suisse', label: 'Approche de terrain' },
+      { value: 'De bout en bout', label: 'Étude à mise en service' },
     ],
     metricMain: {
       label: 'Surveillance',
-      title: 'Systèmes prêts pour le terrain',
-      text: 'Pensés pour des environnements exigeants et une lecture claire des données.',
+      title: 'Systèmes fiables pour conditions réelles',
+      text: 'Des dispositifs pensés pour la continuité opérationnelle, la lisibilité des données et la rapidité d’interprétation.',
     },
-    metricSide: { label: 'Accompagnement', title: 'Du diagnostic à la mise en service' },
+    metricSide: { label: 'Méthode', title: 'Étude, déploiement et suivi technique' },
     highlights: [
-      'Approche d’ingénierie suisse',
-      'Exécution simple et rigoureuse',
-      'Solutions adaptées au terrain',
+      'Ingénierie suisse',
+      'Exécution structurée',
+      'Vision claire du terrain',
       'Support technique réactif',
     ],
-    servicesHeading: 'Ce que GeoAzimut apporte à ses clients',
+    servicesHeading: 'Des services techniques orientés résultat',
     servicesIntro:
-      'Une présentation directe des expertises essentielles, sans surcharge inutile.',
+      'Une offre structurée pour surveiller, analyser et exploiter des données utiles à la décision.',
     services: [
       {
         title: 'Surveillance environnementale',
-        text: 'Systèmes de mesure fiables pour terrains sensibles, infrastructures et dangers naturels.',
+        text: 'Instrumentation et suivi pour terrains sensibles, infrastructures et aléas naturels.',
       },
       {
         title: 'Expertise en géothermie',
-        text: 'Support clair pour essais TRT, analyses de terrain et études techniques.',
+        text: 'Appui technique pour essais TRT, études, interprétation de résultats et cadrage opérationnel.',
       },
       {
-        title: 'Données & alertes',
-        text: 'De la collecte au tableau de bord, avec une information exploitable rapidement.',
+        title: 'Données et visualisation',
+        text: 'Chaîne complète de collecte, structuration et restitution pour une lecture claire de la situation.',
       },
     ],
-    aboutHeading: 'Une expertise technique présentée avec clarté',
+    aboutHeading: 'Une expertise technique rendue lisible',
     aboutText:
-      'L’objectif n’est pas de compliquer. Il est de livrer une solution robuste, bien expliquée et simple à exploiter pour le client.',
+      'GeoAzimut privilégie les solutions robustes, les livrables clairs et une relation de travail simple pour le client comme pour les équipes techniques.',
     approach: 'Approche',
-    approachValue: 'Précise, calme, pratique',
+    approachValue: 'Précise, structurée, pragmatique',
     focus: 'Priorité',
-    focusValue: 'Des systèmes utiles dans des conditions réelles',
-    outcome: 'Résultat',
-    outcomeValue: 'Plus de visibilité, de meilleures décisions, moins de friction',
-    contactHeading: 'Parlons de votre projet',
+    focusValue: 'Des systèmes qui tiennent dans le temps',
+    outcome: 'Effet attendu',
+    outcomeValue: 'Meilleure visibilité, meilleure réactivité, meilleure décision',
+    contactHeading: 'Discuter d’un besoin technique',
     contactText:
-      'Décrivez brièvement votre besoin. Cette demande peut servir de premier point de contact avant un échange plus technique.',
+      'Présentez le contexte, le site et l’objectif. Une première qualification permet d’orienter rapidement la bonne réponse technique.',
     contactButton: 'Envoyer la demande',
-    contactMeta: 'Réponse typique sous 1 à 2 jours ouvrés',
+    contactMeta: 'Réponse indicative sous 1 à 2 jours ouvrés',
     formName: 'Nom',
     formCompany: 'Société',
     formEmail: 'Email',
     formPhone: 'Téléphone',
     formNeed: 'Type de besoin',
     formNeedPlaceholder: 'Choisir',
-    formNeedOptions: ['Surveillance', 'Géothermie', 'Analyse de données', 'Autre'],
+    formNeedOptions: ['Surveillance', 'Géothermie', 'Instrumentation', 'Analyse / données', 'Autre'],
     formMessage: 'Message',
-    formMessagePlaceholder: 'Contexte du site, objectif, urgence, localisation…',
+    formMessagePlaceholder: 'Contexte, localisation, objectif, contraintes, délai…',
     mapEyebrow: 'Installations',
-    mapHeading: 'Réseau d’installations en Suisse',
-    mapText: 'Une lecture plus éditoriale et plus nette du réseau de surveillance, avec nœuds actifs, zones de couverture, catégories de risque et relief cartographique.',
+    mapHeading: 'Présence opérationnelle en Suisse',
+    mapText: 'Une représentation structurée des sites d’installation et de surveillance, avec lecture des zones de couverture et du niveau de vigilance.',
     legendTitle: 'Lecture de la carte',
     legendA: 'Nœud actif',
     legendB: 'Zone de couverture',
     legendC: 'Signal de détection',
     legendD: 'Liaison réseau',
     riskTitle: 'Niveaux de vigilance',
-    riskLow: 'Vigilance standard',
-    riskMedium: 'Vigilance renforcée',
-    riskHigh: 'Zone sensible',
+    riskLow: 'Standard',
+    riskMedium: 'Renforcé',
+    riskHigh: 'Sensible',
     mapCardTitle: 'Carte des installations',
-    mapCardText: 'Visualisation des points d’intervention, du relief et des zones de détection.',
-    mapNote: 'Les nœuds valaisans concentrent les zones de détection les plus denses du réseau.',
-    widgetsTitle: 'Nœuds du réseau',
-    widgetLabel: 'Nœud actif',
+    mapCardText: 'Vue d’ensemble du réseau de sites, du relief et des zones d’attention.',
+    mapNote: 'Le Valais concentre la majorité des nœuds à couverture dense.',
+    widgetsTitle: 'Fiches sites',
+    widgetLabel: 'Site actif',
     coverageLabel: 'Portée',
     vigilanceLabel: 'Niveau',
   },
@@ -94,84 +94,85 @@ const content = {
     langLabel: 'EN',
     nav: { services: 'Services', about: 'About', contact: 'Contact' },
     eyebrow: 'Environmental systems · Geoscience · Geothermal',
-    title: 'Clear, dependable solutions for complex field conditions.',
+    title: 'Monitoring, expertise and data for safer field decisions.',
     intro:
-      'GeoAzimut supports companies and public organisations with measurement systems, analysis and technical guidance built for practical decisions.',
-    primaryCta: 'Contact us',
-    secondaryCta: 'Explore services',
+      'GeoAzimut designs and deploys measurement and analysis systems for demanding environments, with a clear, structured and professional delivery approach.',
+    primaryCta: 'Get in touch',
+    secondaryCta: 'View services',
     stats: [
       { value: '2011', label: 'Founded in Fribourg' },
-      { value: 'Swiss', label: 'Field-based expertise' },
-      { value: 'End-to-end', label: 'Study to deployment' },
+      { value: 'Swiss', label: 'Field-based approach' },
+      { value: 'End-to-end', label: 'Study to commissioning' },
     ],
     metricMain: {
       label: 'Monitoring',
-      title: 'Field-ready systems',
-      text: 'Designed for demanding environments and clear interpretation of the data.',
+      title: 'Reliable systems for real conditions',
+      text: 'Designed for operational continuity, readable data and faster interpretation in the field.',
     },
-    metricSide: { label: 'Support', title: 'From assessment to commissioning' },
+    metricSide: { label: 'Method', title: 'Study, deployment and technical follow-up' },
     highlights: [
-      'Swiss engineering mindset',
-      'Straightforward project delivery',
-      'Solutions shaped by real terrain',
+      'Swiss engineering',
+      'Structured delivery',
+      'Clear field visibility',
       'Responsive technical support',
     ],
-    servicesHeading: 'What GeoAzimut delivers to customers',
-    servicesIntro: 'A direct presentation of the essential expertise, without unnecessary complexity.',
+    servicesHeading: 'Technical services built around outcomes',
+    servicesIntro:
+      'A structured offering to monitor, analyse and turn field data into usable operational insight.',
     services: [
       {
         title: 'Environmental monitoring',
-        text: 'Reliable measurement systems for sensitive terrain, infrastructure and natural hazards.',
+        text: 'Instrumentation and monitoring for sensitive terrain, infrastructure and natural hazards.',
       },
       {
         title: 'Geothermal expertise',
-        text: 'Clear support for TRT testing, field analysis and technical studies.',
+        text: 'Technical support for TRT testing, studies, result interpretation and operational framing.',
       },
       {
-        title: 'Data & alerts',
-        text: 'From acquisition to dashboard, with information that is immediately usable.',
+        title: 'Data and visualisation',
+        text: 'A complete chain for acquisition, structuring and reporting of information that matters.',
       },
     ],
-    aboutHeading: 'Technical expertise, expressed clearly',
+    aboutHeading: 'Technical expertise made readable',
     aboutText:
-      'The goal is not to overwhelm. It is to deliver a robust solution, explain it well and make it easy to use.',
+      'GeoAzimut focuses on robust solutions, clear deliverables and a working relationship that remains simple for both clients and technical teams.',
     approach: 'Approach',
-    approachValue: 'Precise, calm, practical',
-    focus: 'Focus',
-    focusValue: 'Useful systems that perform in real conditions',
-    outcome: 'Outcome',
-    outcomeValue: 'Better visibility, stronger decisions, less friction',
-    contactHeading: 'Let’s discuss your project',
+    approachValue: 'Precise, structured, pragmatic',
+    focus: 'Priority',
+    focusValue: 'Systems that remain dependable over time',
+    outcome: 'Expected outcome',
+    outcomeValue: 'Better visibility, better responsiveness, better decisions',
+    contactHeading: 'Discuss a technical requirement',
     contactText:
-      'Share the essentials of your need. This form works as a clear first contact before a more technical exchange.',
+      'Share the site context, objective and constraints. A first qualification helps direct the right technical response quickly.',
     contactButton: 'Send inquiry',
-    contactMeta: 'Typical reply within 1 to 2 business days',
+    contactMeta: 'Indicative reply within 1 to 2 business days',
     formName: 'Name',
     formCompany: 'Company',
     formEmail: 'Email',
     formPhone: 'Phone',
     formNeed: 'Need type',
     formNeedPlaceholder: 'Select',
-    formNeedOptions: ['Monitoring', 'Geothermal', 'Data analysis', 'Other'],
+    formNeedOptions: ['Monitoring', 'Geothermal', 'Instrumentation', 'Data / analysis', 'Other'],
     formMessage: 'Message',
-    formMessagePlaceholder: 'Site context, objective, urgency, location…',
+    formMessagePlaceholder: 'Context, location, objective, constraints, timing…',
     mapEyebrow: 'Installations',
-    mapHeading: 'Installation network across Switzerland',
-    mapText: 'A cleaner editorial reading of the monitoring network, with active nodes, coverage zones, risk categories and topographic relief.',
+    mapHeading: 'Operational presence across Switzerland',
+    mapText: 'A structured representation of installation and monitoring sites with visibility on coverage zones and watch levels.',
     legendTitle: 'Map legend',
     legendA: 'Active node',
     legendB: 'Coverage zone',
     legendC: 'Detection pulse',
     legendD: 'Network link',
-    riskTitle: 'Risk categories',
-    riskLow: 'Standard watch',
-    riskMedium: 'Elevated watch',
-    riskHigh: 'Sensitive zone',
+    riskTitle: 'Watch levels',
+    riskLow: 'Standard',
+    riskMedium: 'Elevated',
+    riskHigh: 'Sensitive',
     mapCardTitle: 'Installation map',
-    mapCardText: 'Visualisation of intervention points, terrain relief and detection coverage areas.',
-    mapNote: 'The Valais cluster concentrates the densest detection coverage in the network.',
-    widgetsTitle: 'Network nodes',
-    widgetLabel: 'Active node',
+    mapCardText: 'Overall view of the site network, terrain and areas of attention.',
+    mapNote: 'Valais concentrates most of the dense-coverage nodes in the network.',
+    widgetsTitle: 'Site cards',
+    widgetLabel: 'Active site',
     coverageLabel: 'Coverage',
     vigilanceLabel: 'Level',
   },
@@ -179,91 +180,91 @@ const content = {
     langLabel: 'DE',
     nav: { services: 'Leistungen', about: 'Über uns', contact: 'Kontakt' },
     eyebrow: 'Umweltsysteme · Geowissenschaften · Geothermie',
-    title: 'Klare und verlässliche Lösungen für anspruchsvolle Einsätze im Feld.',
+    title: 'Monitoring, Fachkompetenz und Daten für fundiertere Entscheidungen im Feld.',
     intro:
-      'GeoAzimut unterstützt Unternehmen und öffentliche Auftraggeber mit Messsystemen, Analysen und technischer Begleitung für konkrete Entscheidungen.',
+      'GeoAzimut entwickelt und betreibt Mess- und Analysesysteme für anspruchsvolle Umgebungen – klar, strukturiert und professionell umgesetzt.',
     primaryCta: 'Kontakt aufnehmen',
     secondaryCta: 'Leistungen ansehen',
     stats: [
       { value: '2011', label: 'Gegründet in Freiburg' },
-      { value: 'Schweiz', label: 'Praxisnahe Expertise' },
-      { value: 'Ganzheitlich', label: 'Von Studie bis Einsatz' },
+      { value: 'Schweiz', label: 'Praxisnahe Arbeitsweise' },
+      { value: 'Ganzheitlich', label: 'Von Studie bis Inbetriebnahme' },
     ],
     metricMain: {
-      label: 'Überwachung',
-      title: 'Systeme für reale Einsatzbedingungen',
-      text: 'Konzipiert für anspruchsvolle Umgebungen und eine klare Auswertung der Daten.',
+      label: 'Monitoring',
+      title: 'Zuverlässige Systeme für reale Bedingungen',
+      text: 'Ausgelegt auf Betriebssicherheit, klare Datennutzung und schnelle Interpretation im Feld.',
     },
-    metricSide: { label: 'Begleitung', title: 'Von der Analyse bis zur Inbetriebnahme' },
+    metricSide: { label: 'Methode', title: 'Studie, Umsetzung und technische Begleitung' },
     highlights: [
       'Schweizer Ingenieuransatz',
-      'Klare und saubere Umsetzung',
-      'Lösungen für echte Geländeanforderungen',
-      'Schneller technischer Support',
+      'Strukturierte Umsetzung',
+      'Klare Sicht auf das Feld',
+      'Reaktiver technischer Support',
     ],
-    servicesHeading: 'Was GeoAzimut seinen Kunden bietet',
-    servicesIntro: 'Eine direkte Darstellung der wichtigsten Kompetenzen ohne unnötige Komplexität.',
+    servicesHeading: 'Technische Leistungen mit klarem Ergebnisfokus',
+    servicesIntro:
+      'Ein strukturiertes Angebot, um zu überwachen, zu analysieren und Felddaten nutzbar zu machen.',
     services: [
       {
         title: 'Umweltmonitoring',
-        text: 'Zuverlässige Messsysteme für sensibles Gelände, Infrastrukturen und Naturgefahren.',
+        text: 'Instrumentierung und Überwachung für sensibles Gelände, Infrastrukturen und Naturgefahren.',
       },
       {
         title: 'Geothermie-Kompetenz',
-        text: 'Klare Unterstützung für TRT-Tests, Feldanalysen und technische Studien.',
+        text: 'Technische Unterstützung für TRT-Tests, Studien, Resultatinterpretation und operative Einordnung.',
       },
       {
-        title: 'Daten & Alarme',
-        text: 'Von der Erfassung bis zum Dashboard mit Informationen, die direkt nutzbar sind.',
+        title: 'Daten und Visualisierung',
+        text: 'Vollständige Kette für Erfassung, Strukturierung und verständliche Auswertung relevanter Informationen.',
       },
     ],
-    aboutHeading: 'Technische Kompetenz, klar vermittelt',
+    aboutHeading: 'Technische Kompetenz verständlich dargestellt',
     aboutText:
-      'Es geht nicht darum zu überladen. Es geht darum, eine robuste Lösung zu liefern, sie klar zu erklären und einfach nutzbar zu machen.',
+      'GeoAzimut setzt auf robuste Lösungen, klare Ergebnisse und eine Zusammenarbeit, die für Auftraggeber und technische Teams einfach bleibt.',
     approach: 'Ansatz',
-    approachValue: 'Präzise, ruhig, praxisnah',
-    focus: 'Fokus',
-    focusValue: 'Nützliche Systeme für reale Bedingungen',
-    outcome: 'Ergebnis',
-    outcomeValue: 'Mehr Übersicht, bessere Entscheidungen, weniger Reibung',
-    contactHeading: 'Sprechen wir über Ihr Projekt',
+    approachValue: 'Präzise, strukturiert, pragmatisch',
+    focus: 'Priorität',
+    focusValue: 'Systeme, die langfristig belastbar bleiben',
+    outcome: 'Erwarteter Nutzen',
+    outcomeValue: 'Mehr Übersicht, schnellere Reaktion, bessere Entscheidungen',
+    contactHeading: 'Einen technischen Bedarf besprechen',
     contactText:
-      'Beschreiben Sie kurz Ihren Bedarf. Dieses Formular dient als klarer erster Kontakt vor einer vertieften technischen Abstimmung.',
+      'Beschreiben Sie Standort, Ziel und Rahmenbedingungen. Eine erste Einordnung hilft, rasch die passende technische Antwort zu formulieren.',
     contactButton: 'Anfrage senden',
-    contactMeta: 'Typische Rückmeldung innerhalb von 1 bis 2 Werktagen',
+    contactMeta: 'Rückmeldung in der Regel innerhalb von 1 bis 2 Werktagen',
     formName: 'Name',
     formCompany: 'Unternehmen',
     formEmail: 'E-Mail',
     formPhone: 'Telefon',
-    formNeed: 'Art des Bedarfs',
+    formNeed: 'Bedarfsart',
     formNeedPlaceholder: 'Auswählen',
-    formNeedOptions: ['Monitoring', 'Geothermie', 'Datenanalyse', 'Andere'],
+    formNeedOptions: ['Monitoring', 'Geothermie', 'Instrumentierung', 'Daten / Analyse', 'Andere'],
     formMessage: 'Nachricht',
-    formMessagePlaceholder: 'Standortkontext, Ziel, Dringlichkeit, Ort…',
+    formMessagePlaceholder: 'Kontext, Ort, Ziel, Randbedingungen, Zeitrahmen…',
     mapEyebrow: 'Installationen',
-    mapHeading: 'Installationsnetz in der ganzen Schweiz',
-    mapText: 'Eine klarere und editoriale Darstellung des Überwachungsnetzes mit aktiven Knoten, Abdeckungszonen, Risikokategorien und topografischem Relief.',
+    mapHeading: 'Operative Präsenz in der ganzen Schweiz',
+    mapText: 'Eine strukturierte Darstellung der Installations- und Überwachungsstandorte mit Abdeckungszonen und Wachsamkeitsstufen.',
     legendTitle: 'Kartenlegende',
     legendA: 'Aktiver Knoten',
     legendB: 'Abdeckungszone',
     legendC: 'Erkennungssignal',
     legendD: 'Netzverbindung',
-    riskTitle: 'Risikokategorien',
-    riskLow: 'Standardüberwachung',
-    riskMedium: 'Erhöhte Überwachung',
-    riskHigh: 'Sensibler Bereich',
+    riskTitle: 'Wachsamkeitsstufen',
+    riskLow: 'Standard',
+    riskMedium: 'Erhöht',
+    riskHigh: 'Sensibel',
     mapCardTitle: 'Installationskarte',
-    mapCardText: 'Visualisierung der Einsatzpunkte, des Reliefs und der Erfassungsbereiche.',
-    mapNote: 'Die Walliser Standorte bilden den dichtesten Erfassungsbereich des Netzwerks.',
-    widgetsTitle: 'Netzknoten',
-    widgetLabel: 'Aktiver Knoten',
+    mapCardText: 'Gesamtansicht des Standortnetzes, des Reliefs und der Aufmerksamkeitszonen.',
+    mapNote: 'Das Wallis bündelt den grössten Teil der dicht überwachten Knoten des Netzwerks.',
+    widgetsTitle: 'Standortkarten',
+    widgetLabel: 'Aktiver Standort',
     coverageLabel: 'Abdeckung',
     vigilanceLabel: 'Stufe',
   },
 }
 
 const languageOrder = ['fr', 'en', 'de']
-
 const installations = [
   { name: 'Champéry', coords: [46.17543, 6.86903], danger: 180, level: 'medium' },
   { name: 'Echallens', coords: [46.633, 6.633], danger: 220, level: 'low' },
@@ -281,7 +282,6 @@ const installations = [
   { name: "Torrent de l'Echerche", coords: [46.02, 7.12], danger: 280, level: 'high' },
   { name: 'Sé de la Raide', coords: [46.05, 7.14], danger: 230, level: 'medium' },
 ]
-
 const networkLinks = [
   ['Echallens', 'St-Sulpice'],
   ['St-Sulpice', 'Champéry'],
@@ -291,25 +291,11 @@ const networkLinks = [
   ['Torrent St-Barthélémy', 'Blatten'],
   ['Gottéron (Fribourg)', 'Echallens'],
 ]
-
 const installationByName = Object.fromEntries(installations.map((site) => [site.name, site]))
-
 const levelStyles = {
-  low: {
-    marker: '#6ea6d8',
-    pulse: '#88b8e3',
-    fill: '#dbeaf7',
-  },
-  medium: {
-    marker: '#4f89bf',
-    pulse: '#6ca6d8',
-    fill: '#d0e4f7',
-  },
-  high: {
-    marker: '#c76a4f',
-    pulse: '#d88b73',
-    fill: '#f5ddd5',
-  },
+  low: { marker: '#6ea6d8', pulse: '#88b8e3', fill: '#dbeaf7' },
+  medium: { marker: '#4f89bf', pulse: '#6ca6d8', fill: '#d0e4f7' },
+  high: { marker: '#c76a4f', pulse: '#d88b73', fill: '#f5ddd5' },
 }
 
 function App() {
@@ -322,22 +308,15 @@ function App() {
         <div className="brand brand-with-logo">
           <img src="/original-assets/logo_geoazimut.png" alt="GeoAzimut" className="brand-logo" />
         </div>
-
         <div className="topbar-actions">
           <nav className="nav">
             <a href="#services">{t.nav.services}</a>
             <a href="#about">{t.nav.about}</a>
             <a href="#contact">{t.nav.contact}</a>
           </nav>
-
           <div className="language-switcher" aria-label="Language switcher">
             {languageOrder.map((lang) => (
-              <button
-                key={lang}
-                type="button"
-                className={`lang-pill ${language === lang ? 'active' : ''}`}
-                onClick={() => setLanguage(lang)}
-              >
+              <button key={lang} type="button" className={`lang-pill ${language === lang ? 'active' : ''}`} onClick={() => setLanguage(lang)}>
                 {content[lang].langLabel}
               </button>
             ))}
@@ -355,7 +334,6 @@ function App() {
               <a className="button button-primary" href="#contact">{t.primaryCta}</a>
               <a className="button button-secondary" href="#services">{t.secondaryCta}</a>
             </div>
-
             <div className="stats-row">
               {t.stats.map((stat) => (
                 <div className="stat-card" key={stat.label}>
@@ -368,14 +346,9 @@ function App() {
 
           <div className="hero-visual-wrap">
             <div className="hero-card hero-card-clean">
-              <img
-                src="/original-assets/landscape.jpeg"
-                alt="Mountain landscape and monitoring environment"
-                className="hero-photo"
-              />
+              <img src="/original-assets/landscape.jpeg" alt="Mountain landscape and monitoring environment" className="hero-photo" />
               <div className="hero-overlay" />
             </div>
-
             <div className="hero-summary-panel">
               <div>
                 <small>{t.metricMain.label}</small>
@@ -402,7 +375,6 @@ function App() {
             <h2>{t.servicesHeading}</h2>
             <p>{t.servicesIntro}</p>
           </div>
-
           <div className="services-grid">
             {t.services.map((service) => (
               <article className="service-card" key={service.title}>
@@ -420,7 +392,6 @@ function App() {
             <h2>{t.aboutHeading}</h2>
             <p>{t.aboutText}</p>
           </div>
-
           <div className="feature-panel">
             <div>
               <small>{t.approach}</small>
@@ -445,7 +416,6 @@ function App() {
               <p>{t.mapText}</p>
             </div>
           </div>
-
           <div className="map-layout">
             <div className="osm-map-card white-map-card topo-map-card">
               <div className="map-card-header">
@@ -455,71 +425,23 @@ function App() {
                 </div>
                 <p>{t.mapCardText}</p>
               </div>
-
               <div className="map-callout">
                 <span className="map-callout-dot" />
                 <span>{t.mapNote}</span>
               </div>
-
               <MapContainer center={[46.35, 7.15]} zoom={8} scrollWheelZoom={false} className="leaflet-map light-map">
-                <TileLayer
-                  attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://www.openstreetmap.org/#map=1/71.6/-96.5">OpenTopoMap</a>'
-                  url="https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png"
-                />
-
+                <TileLayer attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://www.openstreetmap.org/#map=1/71.6/-96.5">OpenTopoMap</a>' url="https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png" />
                 {networkLinks.map(([from, to]) => (
-                  <Polyline
-                    key={`${from}-${to}`}
-                    positions={[installationByName[from].coords, installationByName[to].coords]}
-                    pathOptions={{
-                      color: '#8aa9c9',
-                      weight: 2,
-                      opacity: 0.55,
-                      dashArray: '6 8',
-                    }}
-                  />
+                  <Polyline key={`${from}-${to}`} positions={[installationByName[from].coords, installationByName[to].coords]} pathOptions={{ color: '#8aa9c9', weight: 2, opacity: 0.55, dashArray: '6 8' }} />
                 ))}
-
                 {installations.map((site, index) => {
                   const style = levelStyles[site.level]
                   return (
                     <div key={site.name}>
-                      <Circle
-                        center={site.coords}
-                        radius={site.danger * 0.9}
-                        pathOptions={{
-                          color: style.pulse,
-                          weight: 1,
-                          fillColor: style.fill,
-                          fillOpacity: 0.16,
-                          className: `radar-ring radar-ring-${(index % 3) + 1}`,
-                        }}
-                      />
-                      <Circle
-                        center={site.coords}
-                        radius={site.danger * 1.45}
-                        pathOptions={{
-                          color: style.pulse,
-                          weight: 1,
-                          fillColor: style.fill,
-                          fillOpacity: 0.08,
-                          className: `radar-ring radar-ring-${((index + 1) % 3) + 1}`,
-                        }}
-                      />
-                      <CircleMarker
-                        center={site.coords}
-                        radius={9}
-                        pathOptions={{
-                          color: '#ffffff',
-                          weight: 3,
-                          fillColor: style.marker,
-                          fillOpacity: 1,
-                          className: 'node-marker light-node-marker',
-                        }}
-                      >
-                        <Tooltip direction="top" offset={[0, -10]} opacity={1} className="map-tooltip light-tooltip" permanent={false}>
-                          {site.name}
-                        </Tooltip>
+                      <Circle center={site.coords} radius={site.danger * 0.9} pathOptions={{ color: style.pulse, weight: 1, fillColor: style.fill, fillOpacity: 0.14, className: `radar-ring radar-ring-${(index % 3) + 1}` }} />
+                      <Circle center={site.coords} radius={site.danger * 1.45} pathOptions={{ color: style.pulse, weight: 1, fillColor: style.fill, fillOpacity: 0.07, className: `radar-ring radar-ring-${((index + 1) % 3) + 1}` }} />
+                      <CircleMarker center={site.coords} radius={8} pathOptions={{ color: '#ffffff', weight: 3, fillColor: style.marker, fillOpacity: 1, className: 'node-marker light-node-marker' }}>
+                        <Tooltip direction="top" offset={[0, -10]} opacity={1} className="map-tooltip light-tooltip" permanent={false}>{site.name}</Tooltip>
                         <Popup>{site.name}</Popup>
                       </CircleMarker>
                     </div>
@@ -527,44 +449,20 @@ function App() {
                 })}
               </MapContainer>
             </div>
-
             <div className="installations-side-panel white-side-panel">
               <div className="map-legend-card white-legend-card">
                 <strong>{t.legendTitle}</strong>
-                <div className="legend-item legend-item-dark">
-                  <span className="legend-node light-legend-node" />
-                  <span>{t.legendA}</span>
-                </div>
-                <div className="legend-item legend-item-dark">
-                  <span className="legend-zone light-legend-zone" />
-                  <span>{t.legendB}</span>
-                </div>
-                <div className="legend-item legend-item-dark">
-                  <span className="legend-pulse light-legend-pulse" />
-                  <span>{t.legendC}</span>
-                </div>
-                <div className="legend-item legend-item-dark">
-                  <span className="legend-line" />
-                  <span>{t.legendD}</span>
-                </div>
+                <div className="legend-item legend-item-dark"><span className="legend-node light-legend-node" /><span>{t.legendA}</span></div>
+                <div className="legend-item legend-item-dark"><span className="legend-zone light-legend-zone" /><span>{t.legendB}</span></div>
+                <div className="legend-item legend-item-dark"><span className="legend-pulse light-legend-pulse" /><span>{t.legendC}</span></div>
+                <div className="legend-item legend-item-dark"><span className="legend-line" /><span>{t.legendD}</span></div>
               </div>
-
               <div className="map-legend-card white-legend-card risk-card">
                 <strong>{t.riskTitle}</strong>
-                <div className="legend-item legend-item-dark">
-                  <span className="risk-swatch risk-low" />
-                  <span>{t.riskLow}</span>
-                </div>
-                <div className="legend-item legend-item-dark">
-                  <span className="risk-swatch risk-medium" />
-                  <span>{t.riskMedium}</span>
-                </div>
-                <div className="legend-item legend-item-dark">
-                  <span className="risk-swatch risk-high" />
-                  <span>{t.riskHigh}</span>
-                </div>
+                <div className="legend-item legend-item-dark"><span className="risk-swatch risk-low" /><span>{t.riskLow}</span></div>
+                <div className="legend-item legend-item-dark"><span className="risk-swatch risk-medium" /><span>{t.riskMedium}</span></div>
+                <div className="legend-item legend-item-dark"><span className="risk-swatch risk-high" /><span>{t.riskHigh}</span></div>
               </div>
-
               <div className="widgets-panel white-list-card-inner">
                 <strong className="widgets-title">{t.widgetsTitle}</strong>
                 <div className="node-widget-grid">
@@ -594,52 +492,24 @@ function App() {
             <p>{t.contactText}</p>
             <small className="contact-meta">{t.contactMeta}</small>
           </div>
-
           <form className="contact-form">
             <div className="form-grid two-cols">
-              <label>
-                <span>{t.formName}</span>
-                <input type="text" name="name" />
-              </label>
-              <label>
-                <span>{t.formCompany}</span>
-                <input type="text" name="company" />
-              </label>
+              <label><span>{t.formName}</span><input type="text" name="name" /></label>
+              <label><span>{t.formCompany}</span><input type="text" name="company" /></label>
             </div>
-
             <div className="form-grid two-cols">
-              <label>
-                <span>{t.formEmail}</span>
-                <input type="email" name="email" />
-              </label>
-              <label>
-                <span>{t.formPhone}</span>
-                <input type="tel" name="phone" />
-              </label>
+              <label><span>{t.formEmail}</span><input type="email" name="email" /></label>
+              <label><span>{t.formPhone}</span><input type="tel" name="phone" /></label>
             </div>
-
             <label>
               <span>{t.formNeed}</span>
               <select name="need" defaultValue="">
-                <option value="" disabled>
-                  {t.formNeedPlaceholder}
-                </option>
-                {t.formNeedOptions.map((option) => (
-                  <option key={option} value={option}>
-                    {option}
-                  </option>
-                ))}
+                <option value="" disabled>{t.formNeedPlaceholder}</option>
+                {t.formNeedOptions.map((option) => <option key={option} value={option}>{option}</option>)}
               </select>
             </label>
-
-            <label>
-              <span>{t.formMessage}</span>
-              <textarea name="message" rows="6" placeholder={t.formMessagePlaceholder} />
-            </label>
-
-            <button type="submit" className="button button-primary form-submit">
-              {t.contactButton}
-            </button>
+            <label><span>{t.formMessage}</span><textarea name="message" rows="6" placeholder={t.formMessagePlaceholder} /></label>
+            <button type="submit" className="button button-primary form-submit">{t.contactButton}</button>
           </form>
         </section>
       </main>
